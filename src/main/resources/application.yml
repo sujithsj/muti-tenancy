@@ -1,0 +1,44 @@
+spring:
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+  jpa: 
+    database: sql-server
+    show-sql: true 
+    #generate-ddl: false
+    #hibernate: 
+     #ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        type: trace   
+        
+##################################################################
+# MULTITENANCY MASTER DATABASE SETUP
+##################################################################        
+multitenancy: 
+  mtapp: 
+    master: 
+      datasource:
+        url: jdbc:sqlserver://metadatarepo.database.windows.net:1433;databaseName=APOGI_Master
+        username: katankardb
+        password: (:M!cb(w8(db1122
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        connectionTimeout: 20000
+        maxPoolSize: 10
+        idleTimeout: 300000
+        minIdle: 10
+        poolName: masterdb-connection-pool
+
+##################################################################
+# LOGGING LEVELS
+##################################################################        
+logging:
+  level:
+    org:
+      hibernate: 
+        type:  
+          descriptor: 
+            sql: 
+              BasicBinder: TRACE 
